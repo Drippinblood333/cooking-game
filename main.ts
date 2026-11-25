@@ -1,16 +1,18 @@
-// A working best-game-01 entry (Node 22, standard library only): the game is this directory's
-// game/ folder, plain static files a desktop browser loads offline (game/index.html and its ES
-// modules, no library and no network request), and the program hands it in. It copies game/ and
-// screenshots/ from beside this file to /output and writes /output/dossier.json, the summary the
-// judge reads, with the vendored make.fun library. A starting point, not a winner: Block Dodger, a
-// plain 2D canvas game where a paddle dodges falling blocks and catches coins, with a title screen,
-// score, lives and levels, game over and restart, flat colours and no sound. Build your own game
-// (any genre, any library you vendor under game/, or none), put your 3 or 4 PNG or JPEG screenshots
-// in screenshots/ (the first by name is the cover) and run it.
+// Golden Wok Bistro — a complete original cooking game for best-cooking-game-20261125-0137
+// (Node 22, standard library only). The game is this directory's game/ folder: plain static
+// files a desktop browser loads offline (game/index.html and its ES modules, no library and no
+// network request). This program hands it in: it copies game/ and screenshots/ from beside this
+// file to /output and writes /output/dossier.json, the summary the judge reads, with the vendored
+// make.fun library. The game itself is a fast-food kitchen shift: an order board with countdowns,
+// eight ingredient stations (grill/fryer with burn timers), an assembly plate that lights up when
+// it matches an order, serve/trash, a 2:30 shift clock, and coins, streaks and tips.
 //
 // Serve it locally with `node serve.ts`, then open http://localhost:8080.
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+
+const GAME_NAME = 'Golden Wok Bistro';
+const GAME_VERSION = '1.0.0';
 
 import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -39,3 +41,5 @@ writeFileSync(
     game_path_max_bytes: 1000,
   }),
 );
+
+console.log(`${GAME_NAME} v${GAME_VERSION}: dossier written to ${join(out, 'dossier.json')}`);
